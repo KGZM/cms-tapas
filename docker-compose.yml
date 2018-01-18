@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  enduro:
+    image: node:latest
+    restart: always
+    user: node
+    command: sh /home/node/run/entrypoint.sh
+    ports:
+      - 6010:3000
+      - 6011:5000
+    volumes:
+        - "./enduro/app:/home/node/app"
+        - "./enduro/build:/home/node/run"
