@@ -4,12 +4,39 @@ services:
 
   enduro:
     image: node:latest
-    restart: always
     user: node
     command: sh /home/node/run/entrypoint.sh
     ports:
-      - 6010:3000
-      - 6011:5000
+      - 6010:6010
+    environment:
+      - PORT=6010
     volumes:
         - "./enduro/app:/home/node/app"
         - "./enduro/build:/home/node/run"
+        - "./node_modules:/home/node/node_modules"
+        - "./node_modules:/home/node/app/node_modules"
+  keystone:
+    image: node:latest
+    user: node
+    depends_on: 
+      - mongo
+    ports:
+      - 6020:6020
+    command: sh /home/node/run/entrypoint.sh
+    environment:
+      - MONGO_URI=mongodb://mongo/keystone
+      - PORT=6020
+    volumes:
+        - "./keystone/app:/home/node/app"
+        - "./keystone/run:/home/node/run"
+        - "./node_modules:/home/node/node_modules"
+        - "./node_modules:/home/node/app/node_modules"
+  mongo:
+    image: mongo:latest
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - "./mongo/data/:/data/db"
+    ports:
+      - 27017:27017

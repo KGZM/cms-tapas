@@ -1,0 +1,18 @@
+{
+  "answers":
+  {
+    "projectName": "Keystone Test",
+    "viewEngine": "nunjucks",
+    "preprocessor": "sass",
+    "includeBlog": true,
+    "includeGallery": true,
+    "includeEnquiries": true,
+    "userModel": "User",
+    "adminLogin": "admin",
+    "adminPassword": "admin",
+    "newDirectory": false,
+    "includeEmail": false,
+    "includeGuideComments": true,
+    "cloudinaryURL": false
+  }
+}
