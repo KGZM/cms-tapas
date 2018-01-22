@@ -8,7 +8,7 @@
     "includeGallery": true,
     "includeEnquiries": true,
     "userModel": "User",
-    "adminLogin": "admin",
+    "adminLogin": "admin@localhost",
     "adminPassword": "admin",
     "newDirectory": false,
     "includeEmail": false,
